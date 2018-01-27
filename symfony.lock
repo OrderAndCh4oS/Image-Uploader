@@ -71,6 +71,9 @@
     "jms/metadata": {
         "version": "1.6.0"
     },
+    "league/flysystem": {
+        "version": "1.0.42"
+    },
     "liip/imagine-bundle": {
         "version": "1.8",
         "recipe": {
@@ -85,6 +88,15 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.1.1"
+    },
+    "oneup/flysystem-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "0eb87bba411c227da027fe5f7c1dc7954b02f242"
+        }
     },
     "psr/cache": {
         "version": "1.0.1"

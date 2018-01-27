@@ -24,14 +24,14 @@ class ImageUploadController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($image);
             $em->flush();
-            $this->redirectToRoute('image_upload');
+            return $this->redirectToRoute('image_show', ['id' => $image->getId()]);
         }
         $form = $form->createView();
         return $this->render('upload.html.twig', compact('form'));
     }
 
     /**
-     * @Route("/show/{id}")
+     * @Route("/show/{id}", name="image_show")
      * @param Image $image
      * @return Response
      */
