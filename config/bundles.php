@@ -11,4 +11,5 @@ return [
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
+    Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
 ];

@@ -29,4 +29,13 @@ class ImageUploadController extends Controller
         $form = $form->createView();
         return $this->render('upload.html.twig', compact('form'));
     }
+
+    /**
+     * @Route("/show/{id}")
+     * @param Image $image
+     * @return Response
+     */
+    public function show(Image $image) {
+        return $this->render('show.html.twig', compact('image'));
+    }
 }

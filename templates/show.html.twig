@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('squared_thumbnail')  }}" />
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
