@@ -1,0 +1,7 @@
+{%- block widget_attributes -%}
+    class="b--black bw1 pa1 db mb2"
+    id="{{ id }}" name="{{ full_name }}"
+    {%- if disabled %} disabled="disabled"{% endif -%}
+    {%- if required %} required="required"{% endif -%}
+    {{ block('attributes') }}
+{%- endblock widget_attributes -%}

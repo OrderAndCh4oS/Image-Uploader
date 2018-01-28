@@ -3,6 +3,8 @@
 {% block body %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <input type="submit" name="Upload">
+    <input class="bg-black hover-bg-blue white pa2 no-underline bn pointer"
+           type="submit" value="Upload"
+    >
     {{ form_end(form) }}
 {% endblock %}
