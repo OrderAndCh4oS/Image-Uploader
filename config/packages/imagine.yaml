@@ -6,8 +6,8 @@ liip_imagine:
         default_uploads:
             flysystem:
                 filesystem_service: oneup_flysystem.default_uploads_filesystem
-                root_url:           "http://localhost:8000/images/uploads"
-                cache_prefix:       media/cache
+                root_url:           "http://%env(resolve:AWS_BUCKET)%.s3.eu-west-2.amazonaws.com/uploads/"
+                cache_prefix:       cache
                 visibility:         public
 #        default:
 #            web_path:
@@ -15,26 +15,26 @@ liip_imagine:
 #                cache_prefix: "images/cache"
 
     loaders:
-        default_uploads:
+#        default:
+#            filesystem:
+#                data_root: "%kernel.project_dir%/public/"
+        default:
             flysystem:
                 filesystem_service: oneup_flysystem.default_uploads_filesystem
 
-    data_loader: default_uploads
-#            filesystem:
-#                data_root: "%kernel.project_dir%/public/"
+    data_loader: default
+
 
     filter_sets:
         squared_thumbnail:
-            jpeg_quality:          85
-            png_compression_level: 8
             filters:
                 auto_rotate: ~
                 strip: ~
                 thumbnail:
-                    size:          [50, 50]
+                    size:          [512, 512]
                     mode:          outbound
                     allow_upscale: true
-                background:
-                    size:     [55, 55]
-                    position: center
-                    color:    '#ccc'
+#            Symfony's ProcessBuilder deprecated, post_processors not working yet
+#            post_processors:
+#                jpegoptim: { strip_all: true, max: 85, progressive: true }
+#                optipng: { strip_all: true, level: 8 }

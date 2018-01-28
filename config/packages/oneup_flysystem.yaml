@@ -2,11 +2,16 @@
 oneup_flysystem:
     adapters:
         default_uploads:
-            local:
-                directory: '%kernel.project_dir%/public/images/uploads'
+            awss3v3:
+                client: acme.s3_client
+                bucket: oaccimageuploader
+                prefix: 'uploads'
+
+#            local:
+#                directory: '%kernel.project_dir%/public/images/new_uploads'
     filesystems:
         default_uploads:
             adapter: default_uploads
             alias: League\Flysystem\Filesystem
             mount: default_uploads
-
+            visibility: public

@@ -30,3 +30,13 @@ services:
         public: true
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    acme.s3_client:
+        class: Aws\S3\S3Client
+        arguments:
+            -
+                version: '2006-03-01' # or 'latest'
+                region: "eu-west-2" # 'eu-central-1' for example
+                credentials:
+                    key: "%env(resolve:AWS_KEY)%"
+                    secret: "%env(resolve:AWS_SECRET)%"
