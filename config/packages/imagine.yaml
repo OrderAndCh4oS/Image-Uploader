@@ -1,5 +1,5 @@
 liip_imagine:
-    driver: "gd"
+    driver: "imagick"
     cache: default_uploads
 
     resolvers:
@@ -26,7 +26,10 @@ liip_imagine:
 
 
     filter_sets:
+
         squared_thumbnail:
+            jpeg_quality: 85
+            png_compression_level: 8
             filters:
                 auto_rotate: ~
                 strip: ~
