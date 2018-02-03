@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Image;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,13 +21,20 @@ class ImageUploadController extends Controller
         $image = new Image();
         $form = $this->createForm('App\Form\ImageType', $image);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($image);
             $em->flush();
-            return $this->redirectToRoute('image_show', ['id' => $image->getId()]);
+
+            return new JsonResponse(
+                [
+                    'status' => 'success',
+                    'message' => 'Image Uploaded',
+                ]
+            );
         }
         $form = $form->createView();
+
         return $this->render('upload.html.twig', compact('form'));
     }
 
@@ -35,7 +43,8 @@ class ImageUploadController extends Controller
      * @param Image $image
      * @return Response
      */
-    public function show(Image $image) {
+    public function show(Image $image)
+    {
         return $this->render('show.html.twig', compact('image'));
     }
 }

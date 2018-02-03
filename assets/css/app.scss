@@ -1,0 +1,79 @@
+@import "~tachyons";
+
+/*
+ * The MIT License
+ * Copyright (c) 2012 Matias Meno <m@tias.me>
+ */
+.dropzone, .dropzone * {
+    box-sizing: border-box;
+}
+
+.dropzone {
+    border: black dashed 1px;
+    padding: 15px;
+    width: 230px;
+    height: 230px;
+    text-align: center;
+}
+
+.dropzone {
+    position: relative;
+}
+
+.dropzone .dz-preview {
+    position: absolute;
+    display: inline-block;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: 200px;
+}
+
+.dropzone .dz-details {
+    position: absolute;
+    bottom: 25px;
+    right: 12px;
+    text-align: right;
+    font-weight: bold;
+    color: gold;
+    text-shadow: 1px 1px 1px black;
+}
+
+.dropzone .dz-progress {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: block;
+    height: 15px;
+    border: 1px solid #aaa;
+}
+
+.dropzone .dz-preview .dz-progress .dz-upload {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: blue;
+}
+
+.dropzone .dz-preview .dz-error-message {
+    color: red;
+    display: none;
+}
+
+.dropzone .dz-preview.dz-error .dz-error-message, .dropzone .dz-preview.dz-error .dz-error-mark {
+    display: block;
+}
+
+.dropzone .dz-preview.dz-success .dz-success-mark {
+    display: block;
+}
+
+.dropzone .dz-preview .dz-error-mark, .dropzone .dz-preview .dz-success-mark {
+    position: absolute;
+    display: none;
+    top: 54px;
+    width: 54px;
+    height: 58px;
+    left: 50%;
+    margin-left: -27px;
+}

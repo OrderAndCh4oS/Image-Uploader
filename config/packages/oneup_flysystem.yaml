@@ -4,7 +4,7 @@ oneup_flysystem:
         default_uploads:
             awss3v3:
                 client: acme.s3_client
-                bucket: oaccimageuploader
+                bucket: "%env(resolve:AWS_BUCKET)%"
                 prefix: 'uploads'
 
 #            local:

@@ -1,10 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input class="bg-black hover-bg-blue white pa2 no-underline bn pointer"
-           type="submit" value="Upload"
-    >
-    {{ form_end(form) }}
+    <form name="image" method="post" action="/" id="imageFileForm" class="dropzone">
+    </form>
 {% endblock %}
