@@ -5,6 +5,8 @@
     <p>
         <a class="bg-black hover-bg-blue white pa2 no-underline dib"
            href="{{ path('image_upload') }}"
-        >Back to Image Uploader</a>
+        >Back to Image Uploader</a> <a class="bg-black hover-bg-blue white pa2 no-underline dib"
+                                       href="{{ path('image_delete', {'id': image.id}) }}"
+        >Delete</a>
     </p>
 {% endblock %}
