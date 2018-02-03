@@ -9,6 +9,9 @@ let dropzone = new Dropzone("form#imageFileForm",
         thumbnailWidth: 200,
         thumbnailHeight: 200
     });
+dropzone.on("success", function (file, response) {
+    window.location = "/show/" + response.data.id;
+});
 Dropzone.autoDiscover = false;
 
 

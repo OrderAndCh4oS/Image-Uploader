@@ -30,6 +30,9 @@ class ImageUploadController extends Controller
                 [
                     'status' => 'success',
                     'message' => 'Image Uploaded',
+                    'data' => [
+                        'id' => $image->getId(),
+                    ],
                 ]
             );
         }
