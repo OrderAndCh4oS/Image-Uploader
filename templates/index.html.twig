@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <p class="bb br-0 bl-0 bt-0 b--dotted pb3 mb3"><a class="bg-black hover-bg-blue white pa2 no-underline dib"
+                                                      href="{{ path('image_upload') }}"
+        >Create Image</a>
+    </p>
     <div class="flex flex-wrap">
         {% for image in images %}
             <div class="mb3 pb2 w-20 pl2 pr2">

@@ -13,6 +13,7 @@
     "build": "encore production"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "dropzone": "^5.3.0",
     "tachyons": "^4.9.1"
   }

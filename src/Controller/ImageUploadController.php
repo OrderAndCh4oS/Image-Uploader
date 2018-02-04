@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Image;
+use League\Flysystem\FileNotFoundException;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -111,5 +114,31 @@ class ImageUploadController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('image_index');
+    }
+
+    /**
+     * @Route("/remove/{id}")
+     * @param Image $image
+     * @param CacheManager $cacheManager
+     * @param UploaderHelper $uploaderHelper
+     * @return JsonResponse
+     */
+    public function remove(Image $image, CacheManager $cacheManager, UploaderHelper $uploaderHelper)
+    {
+        try {
+            $filesystem = $this->container->get('oneup_flysystem.mount_manager')->getFilesystem('default_uploads');
+            $filesystem->delete($uploaderHelper->asset($image, 'imageFile'));
+        } catch (NotFoundExceptionInterface $e) {
+        } catch (ContainerExceptionInterface $e) {
+        } catch (FileNotFoundException $e) {
+        }
+        $cacheManager->remove($uploaderHelper->asset($image, 'imageFile'));
+
+        return new JsonResponse(
+            [
+                'status' => 'success',
+                'message' => 'Image Removed',
+            ]
+        );
     }
 }

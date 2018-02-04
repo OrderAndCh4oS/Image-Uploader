@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <form name="image" method="post" action="/edit/{{ image.id }}" id="imageFileForm" class="dropzone">
+    <form name="image" method="post" action="{{ path('image_update', {'id': image.id}) }}" id="imageFileForm" class="dropzone">
     </form>
     <p>
         <a class="bg-black hover-bg-blue white pa2 no-underline dib"
@@ -11,6 +11,7 @@
 {% endblock %}
 {% block javascripts %}
     <script>
+        var imageId =; {{ image.id }}
         var mockFile = {name: '{{ image.imageName }}', size: {{ image.imageSize }} };
         var mockImageUrl = '{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('square_mid') }}'
     </script>
