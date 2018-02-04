@@ -3,4 +3,9 @@
 {% block body %}
     <form name="image" method="post" action="/" id="imageFileForm" class="dropzone">
     </form>
+    <p>
+        <a class="bg-black hover-bg-blue white pa2 no-underline dib"
+           href="{{ path('image_index') }}"
+        >Back to Image List</a>
+    </p>
 {% endblock %}

@@ -13,12 +13,26 @@ use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 class ImageUploadController extends AbstractController
 {
+
     /**
-     * @Route("/", name="image_upload")
+     * @Route("/", name="image_index")
+     * @return Response
+     */
+    public function index()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $imageRepo = $em->getRepository('App:Image');
+        $images = $imageRepo->findAll();
+
+        return $this->render('index.html.twig', compact('images'));
+    }
+
+    /**
+     * @Route("/upload", name="image_upload")
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
+    public function create(Request $request)
     {
         $image = new Image();
         $form = $this->createForm('App\Form\ImageType', $image);
@@ -44,6 +58,36 @@ class ImageUploadController extends AbstractController
     }
 
     /**
+     * @Route("/edit/{id}", name="image_update")
+     * @param Request $request
+     * @param Image $image
+     * @return Response
+     */
+    public function update(Request $request, Image $image)
+    {
+        $form = $this->createForm('App\Form\ImageType', $image);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($image);
+            $em->flush();
+
+            return new JsonResponse(
+                [
+                    'status' => 'success',
+                    'message' => 'Image Uploaded',
+                    'data' => [
+                        'id' => $image->getId(),
+                    ],
+                ]
+            );
+        }
+        $form = $form->createView();
+
+        return $this->render('edit.html.twig', compact('form', 'image'));
+    }
+
+    /**
      * @Route("/show/{id}", name="image_show")
      * @param Image $image
      * @return Response
@@ -66,6 +110,6 @@ class ImageUploadController extends AbstractController
         $em->remove($image);
         $em->flush();
 
-        return $this->redirectToRoute('image_upload');
+        return $this->redirectToRoute('image_index');
     }
 }

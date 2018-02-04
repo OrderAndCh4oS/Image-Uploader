@@ -24,17 +24,30 @@ liip_imagine:
 
     data_loader: default
 
-
     filter_sets:
-
-        squared_thumbnail:
-            jpeg_quality: 85
+        square_mid:
+            jpeg_quality: 82
             png_compression_level: 8
             filters:
                 auto_rotate: ~
                 strip: ~
                 thumbnail:
-                    size:          [512, 512]
+                    size:          [256, 256]
+                    mode:          outbound
+                    allow_upscale: true
+#            Symfony's ProcessBuilder deprecated, post_processors not working yet
+#            post_processors:
+#                jpegoptim: { strip_all: true, max: 85, progressive: true }
+#                optipng: { strip_all: true, level: 8 }
+
+        square_sml:
+            jpeg_quality: 82
+            png_compression_level: 8
+            filters:
+                auto_rotate: ~
+                strip: ~
+                thumbnail:
+                    size:          [64, 64]
                     mode:          outbound
                     allow_upscale: true
 #            Symfony's ProcessBuilder deprecated, post_processors not working yet

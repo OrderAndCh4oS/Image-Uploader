@@ -12,6 +12,13 @@ let dropzone = new Dropzone("form#imageFileForm",
 dropzone.on("success", function (file, response) {
     window.location = "/show/" + response.data.id;
 });
+
+if (typeof mockFile !== "undefined" && typeof mockImageUrl !== "undefined") {
+    dropzone.options.addedfile.call(dropzone, mockFile);
+    dropzone.options.thumbnail.call(dropzone, mockFile, mockImageUrl);
+    dropzone.emit("complete", mockFile);
+}
+
 Dropzone.autoDiscover = false;
 
 

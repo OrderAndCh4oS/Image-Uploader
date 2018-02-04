@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('squared_thumbnail')  }}" />
+    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('square_mid') }}"/>
     <p>
         <a class="bg-black hover-bg-blue white pa2 no-underline dib"
-           href="{{ path('image_upload') }}"
-        >Back to Image Uploader</a> <a class="bg-black hover-bg-blue white pa2 no-underline dib"
-                                       href="{{ path('image_delete', {'id': image.id}) }}"
+           href="{{ path('image_update', {'id': image.id}) }}"
+        >Edit</a> <a class="bg-black hover-bg-blue white pa2 no-underline dib"
+                     href="{{ path('image_delete', {'id': image.id}) }}"
         >Delete</a>
+    </p>
+    <p>
+        <a class="bg-black hover-bg-blue white pa2 no-underline dib"
+           href="{{ path('image_index') }}"
+        >Back to Image List</a>
     </p>
 {% endblock %}

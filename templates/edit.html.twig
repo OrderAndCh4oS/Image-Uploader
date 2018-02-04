@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <form name="image" method="post" action="/edit/{{ image.id }}" id="imageFileForm" class="dropzone">
+    </form>
+    <p>
+        <a class="bg-black hover-bg-blue white pa2 no-underline dib"
+           href="{{ path('image_index') }}"
+        >Back to Image List</a>
+    </p>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        var mockFile = {name: '{{ image.imageName }}', size: {{ image.imageSize }} };
+        var mockImageUrl = '{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('square_mid') }}'
+    </script>
+    {{ parent() }}
+{% endblock %}
