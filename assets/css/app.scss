@@ -10,10 +10,9 @@
 
 .dropzone {
     border: black dashed 1px;
-    padding: 15px;
     width: 230px;
     height: 230px;
-    text-align: center;
+    padding: 230px 15px 15px;
 }
 
 .dropzone {
@@ -76,4 +75,12 @@
     height: 58px;
     left: 50%;
     margin-left: -27px;
+}
+
+.dropzone .dz-message {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
 }

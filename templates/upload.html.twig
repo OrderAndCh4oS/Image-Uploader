@@ -3,6 +3,9 @@
 {% block body %}
     <form name="image" method="post" action="{{ path('image_upload') }}" id="imageFileForm" class="dropzone">
     </form>
+    <button class="bg-black hover-bg-blue white mt3 pa2 no-underline dib b--none pointer" id="upload-image">
+        Upload
+    </button>
     <p>
         <a class="bg-black hover-bg-blue white pa2 no-underline dib"
            href="{{ path('image_index') }}"

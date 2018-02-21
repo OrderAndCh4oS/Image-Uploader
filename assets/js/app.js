@@ -12,6 +12,7 @@ if (document.getElementById('imageFileForm')) {
             thumbnailWidth: 200,
             thumbnailHeight: 200,
             maxFiles: 2,
+            autoProcessQueue: false,
             init: function () {
                 this.on('addedfile', function () {
                     if (typeof prevFile !== "undefined") {
@@ -37,6 +38,13 @@ if (document.getElementById('imageFileForm')) {
         let existingFileCount = 1; // The number of files already uploaded
         dropzone.options.maxFiles = dropzone.options.maxFiles - existingFileCount;
     }
-
     Dropzone.autoDiscover = false;
+
+    const uploadImageButton = document.getElementById('upload-image');
+    if (uploadImageButton !== null) {
+        uploadImageButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            dropzone.processQueue();
+        });
+    }
 }
