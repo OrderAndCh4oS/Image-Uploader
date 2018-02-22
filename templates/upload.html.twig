@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <form name="image" method="post" action="{{ path('image_upload') }}" id="imageFileForm" class="dropzone">
+    <form name="image" method="post" action="{{ path('image_upload') }}" id="imageFileForm"
+          class="dropzone"
+    >
     </form>
-    <form name="meta" id="meta">
+    <form name="meta" id="meta" class="mt3">
         <label for="alt">Alt Tag</label>
         {{ form_widget(form.alt) }}
     </form>

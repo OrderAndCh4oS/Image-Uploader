@@ -2,7 +2,28 @@ require('../css/app.scss');
 import Dropzone from 'dropzone';
 import axios from 'axios';
 
-if (document.getElementById('imageFileForm')) {
+function initUploadButton(dropzone) {
+    const uploadImageButton = document.getElementById('upload-image');
+    if (uploadImageButton !== null) {
+        uploadImageButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            dropzone.processQueue();
+        });
+    }
+}
+
+function makeMockFIle(dropzone) {
+    if (typeof mockFile !== "undefined" && typeof mockImageUrl !== "undefined") {
+        let imageUrl = mockImageUrl.replace(mockFile, '');
+        dropzone.emit("addedfile", mockFile);
+        dropzone.emit("thumbnail", mockFile, imageUrl);
+        dropzone.emit("complete", mockFile);
+        let existingFileCount = 1; // The number of files already uploaded
+        dropzone.options.maxFiles = dropzone.options.maxFiles - existingFileCount;
+    }
+}
+
+function initDropzone() {
     let prevFile;
     let dropzone = new Dropzone("form#imageFileForm",
         {
@@ -24,9 +45,7 @@ if (document.getElementById('imageFileForm')) {
                 this.on('sending', function (file, xhr, formData) {
                     const metaData = document.getElementById('meta');
                     const metaFormData = new FormData(metaData);
-                    console.log(metaFormData);
                     for (let [key, value] of metaFormData) {
-                        console.log(key, value);
                         formData.append(key, value);
                     }
                 });
@@ -34,27 +53,18 @@ if (document.getElementById('imageFileForm')) {
                 this.on('complete', function (file) {
                     prevFile = file;
                 });
+
+                this.on("success", function (file, response) {
+                    window.location = "/show/" + response.data.id;
+                });
             }
         });
-    dropzone.on("success", function (file, response) {
-        window.location = "/show/" + response.data.id;
-    });
+    return dropzone;
+}
 
-    if (typeof mockFile !== "undefined" && typeof mockImageUrl !== "undefined") {
-        let imageUrl = mockImageUrl.replace(mockFile, '');
-        dropzone.emit("addedfile", mockFile);
-        dropzone.emit("thumbnail", mockFile, imageUrl);
-        dropzone.emit("complete", mockFile);
-        let existingFileCount = 1; // The number of files already uploaded
-        dropzone.options.maxFiles = dropzone.options.maxFiles - existingFileCount;
-    }
+if (document.getElementById('imageFileForm')) {
     Dropzone.autoDiscover = false;
-
-    const uploadImageButton = document.getElementById('upload-image');
-    if (uploadImageButton !== null) {
-        uploadImageButton.addEventListener('click', function (e) {
-            e.preventDefault();
-            dropzone.processQueue();
-        });
-    }
+    let dropzone = initDropzone();
+    makeMockFIle(dropzone);
+    initUploadButton(dropzone);
 }

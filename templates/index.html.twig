@@ -1,15 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <p class="bb br-0 bl-0 bt-0 b--dotted pb3 mb3"><a class="bg-black hover-bg-blue white pa2 no-underline dib"
-                                                      href="{{ path('image_upload') }}"
+    <p class="bb br-0 bl-0 bt-0 b--dotted pb3 mb3">
+        <a class="bg-black hover-bg-blue white pa2 no-underline dib"
+           href="{{ path('image_upload') }}"
         >Create Image</a>
     </p>
     <div class="flex flex-wrap">
         {% for image in images %}
             <div class="mb3 pb2 w-20 pl2 pr2">
                 <div class="b--dotted bb bl-0 br-0 bt-0">
-                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('square_sml') }}"/>
+                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('square_sml') }}"
+                         alt="{{ image.alt }}"
+                    >
                     <p><a class="bg-black hover-bg-blue white pa2 no-underline dib"
                           href="{{ path('image_show', {'id': image.id}) }}"
                         >View</a> <a class="bg-black hover-bg-blue white pa2 no-underline dib"
