@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -41,6 +41,12 @@ class Image
      * @var integer
      */
     private $imageSize;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $alt;
 
     /**
      * @ORM\Column(type="datetime")
@@ -100,5 +106,21 @@ class Image
     public function getImageSize(): ?int
     {
         return $this->imageSize;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlt(): ?string
+    {
+        return $this->alt;
+    }
+
+    /**
+     * @param string $alt
+     */
+    public function setAlt(string $alt): void
+    {
+        $this->alt = $alt;
     }
 }

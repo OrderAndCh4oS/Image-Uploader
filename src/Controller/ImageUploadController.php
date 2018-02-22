@@ -16,7 +16,6 @@ use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 class ImageUploadController extends AbstractController
 {
-
     /**
      * @Route("/", name="image_index")
      * @return Response

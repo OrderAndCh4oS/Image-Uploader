@@ -1,8 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <form name="image" method="post" action="{{ path('image_update', {'id': image.id}) }}" id="imageFileForm" class="dropzone">
+    <form name="image" method="post" action="{{ path('image_upload', {'id': image.id}) }}" id="imageFileForm" class="dropzone">
     </form>
+    <form name="meta">
+        <label for="alt">Alt Tag</label>
+        <input name="alt" id="alt" value="{{ image.alt }}">
+    </form>
+    <button class="bg-black hover-bg-blue white mt3 pa2 no-underline dib b--none pointer" id="upload-image">
+        Upload
+    </button>
     <p>
         <a class="bg-black hover-bg-blue white pa2 no-underline dib"
            href="{{ path('image_index') }}"
@@ -11,7 +18,7 @@
 {% endblock %}
 {% block javascripts %}
     <script>
-        var imageId =; {{ image.id }}
+        var imageId = {{ image.id }};
         var mockFile = {name: '{{ image.imageName }}', size: {{ image.imageSize }} };
         var mockImageUrl = '{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('square_mid') }}'
     </script>

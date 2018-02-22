@@ -21,6 +21,16 @@ if (document.getElementById('imageFileForm')) {
                     }
                 });
 
+                this.on('sending', function (file, xhr, formData) {
+                    const metaData = document.getElementById('meta');
+                    const metaFormData = new FormData(metaData);
+                    console.log(metaFormData);
+                    for (let [key, value] of metaFormData) {
+                        console.log(key, value);
+                        formData.append(key, value);
+                    }
+                });
+
                 this.on('complete', function (file) {
                     prevFile = file;
                 });

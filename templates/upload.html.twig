@@ -3,6 +3,10 @@
 {% block body %}
     <form name="image" method="post" action="{{ path('image_upload') }}" id="imageFileForm" class="dropzone">
     </form>
+    <form name="meta" id="meta">
+        <label for="alt">Alt Tag</label>
+        {{ form_widget(form.alt) }}
+    </form>
     <button class="bg-black hover-bg-blue white mt3 pa2 no-underline dib b--none pointer" id="upload-image">
         Upload
     </button>
