@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.52.14",
+            "version": "3.52.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "56eaf614aa943dff652ce7458cfaf3220e568a6c"
+                "reference": "d0c292e94d53bb131b4ec5d751d76363722d8afc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/56eaf614aa943dff652ce7458cfaf3220e568a6c",
-                "reference": "56eaf614aa943dff652ce7458cfaf3220e568a6c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d0c292e94d53bb131b4ec5d751d76363722d8afc",
+                "reference": "d0c292e94d53bb131b4ec5d751d76363722d8afc",
                 "shasum": ""
             },
             "require": {
@@ -85,7 +85,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-02-21 18:50:51"
+            "time": "2018-02-23 18:27:59"
         },
         {
             "name": "behat/transliterator",
@@ -1581,12 +1581,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipImagineBundle.git",
-                "reference": "ef42b7a357646062cce8f849af2cf421e04768d9"
+                "reference": "003d7978d9249671cd9c2fea0484f18987554128"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/ef42b7a357646062cce8f849af2cf421e04768d9",
-                "reference": "ef42b7a357646062cce8f849af2cf421e04768d9",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/003d7978d9249671cd9c2fea0484f18987554128",
+                "reference": "003d7978d9249671cd9c2fea0484f18987554128",
                 "shasum": ""
             },
             "require": {
@@ -1673,7 +1673,7 @@
                 "symfony",
                 "transformation"
             ],
-            "time": "2018-02-18 08:55:44"
+            "time": "2018-02-21 23:28:42"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -2983,16 +2983,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.0.69",
+            "version": "v1.0.70",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "9f73868b361692629c73929c4dc2003f8d4bcae8"
+                "reference": "1f00c05d35523dc0ac52e4a457989a069be5a7a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/9f73868b361692629c73929c4dc2003f8d4bcae8",
-                "reference": "9f73868b361692629c73929c4dc2003f8d4bcae8",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/1f00c05d35523dc0ac52e4a457989a069be5a7a4",
+                "reference": "1f00c05d35523dc0ac52e4a457989a069be5a7a4",
                 "shasum": ""
             },
             "require": {
@@ -3025,7 +3025,7 @@
                     "email": "fabien.potencier@gmail.com"
                 }
             ],
-            "time": "2018-02-19 11:25:02"
+            "time": "2018-02-22 07:00:47"
         },
         {
             "name": "symfony/form",
